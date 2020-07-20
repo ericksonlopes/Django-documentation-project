@@ -35,7 +35,7 @@ class IndexView(ListView):
     context_object_name = 'latest_question_list'
 
     def get_queryset(self):
-        return Question.objects.order_by('-pub_date')[:5]
+        return Question.objects.filter(pub_date__lte=timezone.now())
 
 
 class DetailView(generic_Detail):
